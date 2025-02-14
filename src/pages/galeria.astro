@@ -1,0 +1,82 @@
+---
+  import Data from '../components/API.ts'
+ export async function getData(){
+   const get=(item)=>{
+     console.log('asd')
+   }
+ }
+ 
+ const get=(item)=>
+ {
+   const tes='prueba'
+    return tes
+  }
+  
+    const {tes} =Astro.props
+---
+<script>
+//import Data from '../components/API.ts';
+const category=document.getElementById('category');
+category.addEventListener('change', ()=>myFunction(category.value));
+const myFunction= async (item)=>{
+  const responsePhotos = await fetch(
+  'https://dummyjson.com/recipes/');
+let Photos = await responsePhotos.json();
+const listadoArticulosDOM = document.querySelector("#listado-articulos");
+	listadoArticulosDOM.innerHTML = "";
+  if(item==""){
+	listadoArticulosDOM.innerHTML = '<div id="alert-4" class="flex m-5 items-center p-4 mb-4 text-yellow-800 rounded-lg bg-yellow-50" role="alert"><svg class="shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20"><path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/></svg><span class="sr-only">Info</span><div class="ms-3 text-xl font-medium">Seleccioné alguna de las categorias.</div></div>';
+  }else{
+
+for(let items in Photos.recipes){
+ Photos.recipes[items].mealType.forEach(type=> 
+ {
+   if(type===item){
+const list = document.createElement("li");
+  const title= document.createElement("h3");
+  const link= document.createElement("a");
+  const description= document.createElement("p");
+  const img= document.createElement("img");
+  const textnode = document.createTextNode(Photos.recipes[items].name)
+  //const srcImg = document.createTextNode(Photos.recipes[item].strMealThumb)
+  //console.log(Photos.recipes[items].name.replaceAll(" ","-"))
+  link.setAttribute('class','flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 ')
+  img.setAttribute('class','object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg')
+  list.setAttribute('class','w-sm m-2')
+  title.setAttribute('class','p-3 ')
+  link.setAttribute('href',''+Photos.recipes[items].name.replaceAll(" ","-").toLowerCase()+'')
+  title.appendChild(textnode);
+  img.setAttribute('src',''+ Photos.recipes[items].image+'');
+  list.appendChild(title)
+  list.appendChild(link)
+  link.appendChild(img)
+  link.appendChild(title)
+  listadoArticulosDOM.appendChild(list);
+  }
+ })
+}
+const ulcontainer=document.getElementById("list");
+  ulcontainer.appendChild(listadoArticulosDOM);
+console.log(Photos.recipes.map(item=>item.strMeal));
+ }
+}
+</script>
+<div class="bg-[#201e1e1f] pt-[4rem]">
+  <div id="container" class="mx-auto max-w-screen-xl  flex-wrap p-4">
+    <select id="category" onChange={get()} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mx-[2rem]" style="    width: -webkit-fill-available;">  
+      <option value="" >Seleccioine unas categoria</option>
+      <option value="Lunch">Almuerzo</option>
+      <option value="Dinner">Cena</option>
+      <option value="Snack">Bocadillo</option>
+      <option value="Dessert">Postre</option>
+      <option value="Side Dish">Guarnición</option>
+      <option value="Breakfast">Desayuno</option>
+      <option value="Beverage">Bebidas</option>
+    </select>
+    <ul href="#" id="list" >
+      <div id="listado-articulos" class="flex flex-wrap justify-center " ></div>
+    </ul>
+  </div>
+  
+</div>
+<p>{tes}</p>

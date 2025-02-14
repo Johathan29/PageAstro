@@ -1,0 +1,53 @@
+---
+  import Layout from '../layouts/Layout.astro';
+  import Footer from '../components/Footer.astro';
+  import Header from '../components/Header.astro';
+    import Data from '../components/API.ts';
+import "./style.css";
+  export async function getStaticPaths(){
+    const galerias=Data.value[2];
+   // console.log(galerias)
+   return galerias.recipes.map((galeria) => {
+    return {
+      params: { slug: galeria.name.replaceAll(" ", "-").toLowerCase()},
+      props: { galeria },
+    };
+  });
+
+  }
+  const {galeria} =Astro.props
+---
+<Layout>
+<Header/>
+   <section id="container" class="mx-auto max-w-screen-xl  flex flex-wrap md:gap-[5rem] p-[5rem] ">
+      <div class="w-full md:w-[24rem] md:border-r-4 md:pr-[5rem] text-center border-[#6972824d]">
+        <h1 class="text-red-800 text-[2rem] font-serif">{galeria.name}</h1>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside  px-[3rem] text-left" >
+        {galeria.ingredients.map(item=>
+        <li>
+        { item}
+        </li>
+        )}
+        </ul>
+      </div>
+      <div class="w-full md:w-[24rem] md:max-w-[24rem] text-center">
+        <img src={galeria.image} class="rounded-lg"/>
+        </div>
+        </section>
+        <section class="mx-auto max-w-screen-xl py-[2rem] ">
+        <div class="rounded-lg border bg-white shadow-2xl border-[#cfc5d0]">
+        <h2 class="text-black !text-[2rem] font-serif px-[2rem] !m-[0rem]">
+        Instrucciones 
+        </h2>
+        <ol class="space-y-1 list-decimal text-gray-700 list-disc list-inside  px-[3rem] py-[2rem] text-left" >
+        {galeria.instructions.map(item=>
+        <li class="mb-[0.4rem]">
+        <span class="mx-[1rem]">
+        { item}</span>
+        </li>
+        )}
+        </ol>
+        </div>
+    </section>
+  <Footer/>
+</Layout>

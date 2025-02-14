@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  date: string;
+  description: string;
+  publishDate: string;
+  viewCount: number;
+}
+const { title,date=new Date().getFullYear(), description, publishDate, viewCount } = Astro.props;
+
+
+---
+<script>
+
+</script>
+<footer class="bg-white  shadow-sm -bottom-full  dark:bg-gray-800 p-8">
+    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+      <p class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {date} <a href="https://flowbite.com/" class="hover:underline hover:text-white">Flowbite™</a>. All Rights Reserved.
+    </p>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6 hover:text-white">About</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6 hover:text-white">Privacy Policy</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline me-4 md:me-6 hover:text-white">Licensing</a>
+        </li>
+        <li>
+            <a href="#" class="hover:underline hover:text-white">Contact</a>
+        </li>
+    </ul>
+    </div>
+</footer>
