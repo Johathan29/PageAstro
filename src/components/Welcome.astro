@@ -6,11 +6,11 @@ import Data from '../components/API.ts';
 import Footer from '../components/Footer.astro';
 import Footer from '../components/herecia.vue';
 import Header from '../components/Header.astro';
-import "../pages/style.css";
+//import "../pages/style.css";
 import Form from '../components/Form.astro';
 import Galeria  from '../pages/galeria.astro';
 const data=Data.value[0];
-console.log(data.length)
+
 ---
 <script>
 import Data from '../components/API.ts';
@@ -49,14 +49,14 @@ document.getElementById("include").appendChild(list);
 
 }*/
 </script>
-<Header/>
+
 <div id="container" class="mx-auto max-w-screen-xl">
 	<img id="background" src={background.src} alt="" fetchpriority="high" />
 	<main>
 		<section id="hero" class="flex">
 			<ul id="" class="flex w-full flex-wrap ">
 				{data.map((item,index)=> index<=11 ?
-				<li class="block  md:w-sm p-6 m-2 border bg-white hover:bg-pink-100 sm:w-full border-gray-200 rounded-lg shadow-sm">
+				<li class="block  md:w-sm p-6 m-2 border hover:cursor-pointer  bg-white hover:bg-pink-100 sm:w-full border-gray-200 rounded-lg shadow-sm">
 						<h3 class="mb-2 uppercase text-[16px] font-bold tracking-tight text-black font-serif">
 							{item['title'] }{  }
 						</h3>

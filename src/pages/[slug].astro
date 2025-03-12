@@ -2,8 +2,8 @@
   import Layout from '../layouts/Layout.astro';
   import Footer from '../components/Footer.astro';
   import Header from '../components/Header.astro';
-    import Data from '../components/API.ts';
-import "./style.css";
+  import Data from '../components/API.ts';
+//import "./style.css";
   export async function getStaticPaths(){
     const galerias=Data.value[2];
    // console.log(galerias)
@@ -17,8 +17,8 @@ import "./style.css";
   }
   const {galeria} =Astro.props
 ---
-<Layout>
-<Header/>
+<Layout title={galeria.name}>
+
    <section id="container" class="mx-auto max-w-screen-xl  flex flex-wrap md:gap-[5rem] p-[5rem] ">
       <div class="w-full md:w-[24rem] md:border-r-4 md:pr-[5rem] text-center border-[#6972824d]">
         <h1 class="text-red-800 text-[2rem] font-serif">{galeria.name}</h1>
