@@ -14,15 +14,7 @@ import "../pages/style.css";
 			<script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@3.0.0/dist/flowbite.min.js"></script>
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
-		<ClientRouter>
-	</head>
-	<body>
-<Header/>
-		<slot />
-	
-	</body>
-</html>
-
+		<ClientRouter/>
 <style is:global>
 @import 'tailwindcss';
 	html,
@@ -32,3 +24,12 @@ import "../pages/style.css";
 		height: 100%;
 	}
 </style>
+	</head>
+	<body>
+<Header/>
+		<slot />
+	
+	</body>
+</html>
+
+
